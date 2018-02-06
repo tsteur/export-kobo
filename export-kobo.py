@@ -227,18 +227,9 @@ class Item(object):
         acc = []
         sep = u"\n=== === ===\n"
         if self.kind == self.ANNOTATION:
-            acc.append(u"Type:           %s" % (self.kind))
-            acc.append(u"Title:          %s" % (self.title))
-            acc.append(u"Author:         %s" % (self.author))
-            acc.append(u"Date created:   %s" % (self.datecreated))
-            acc.append(u"Annotation:%s%s%s" % (sep, self.annotation, sep))
-            acc.append(u"Reference text:%s%s%s" % (sep, self.text, sep))
+            acc.append(self.text)
         if self.kind == self.HIGHLIGHT:
-            acc.append(u"Type:           %s" % (self.kind))
-            acc.append(u"Title:          %s" % (self.title))
-            acc.append(u"Author:         %s" % (self.author))
-            acc.append(u"Date created:   %s" % (self.datecreated))
-            acc.append(u"Reference text:%s%s%s" % (sep, self.text, sep))
+            acc.append(self.text)
         return u"\n".join(acc)
 
 
