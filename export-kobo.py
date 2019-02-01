@@ -265,13 +265,6 @@ class ExportKobo(CommandLineTool):
     AP_DESCRIPTION = u"Export annotations and highlights from a Kobo SQLite file."
     AP_ARGUMENTS = [
         {
-            "name": "db",
-            "nargs": None,
-            "type": str,
-            "default": None,
-            "help": "Path of the input KoboReader.sqlite file"
-        },
-        {
             "name": "--output",
             "nargs": "?",
             "type": str,
@@ -361,8 +354,6 @@ class ExportKobo(CommandLineTool):
         The main function of the tool: parse the parameters,
         read the given SQLite file, and format/output data as requested.
         """
-        if self.vargs["db"] is None:
-            self.error(u"You must specify the path to your KoboReader.sqlite file.")
 
         books = self.enumerate_books()
         if self.vargs["list"]:
@@ -477,7 +468,7 @@ class ExportKobo(CommandLineTool):
         """
         Run the given query over the SQLite file.
         """
-        db_path = self.vargs["db"]
+        db_path = "/Volumes/KOBOeReader/.kobo/KoboReader.sqlite"
         if not os.path.exists(db_path):
             self.error(u"Unable to read the KoboReader.sqlite file. Please check that the path is correct and that you have read permission on it.")
         try:
